@@ -19,12 +19,14 @@
         * {
             box-sizing: border-box;
             font-family: 'Tajawal', sans-serif;
+            font-size: 0.8rem;
         }
         body {
             background: linear-gradient(135deg, #f1f5f9 0%, #e2e8f0 100%);
             margin: 0;
-            padding: 15px;
+            padding: 10px;
             min-height: 100vh;
+            padding-bottom: 60px;
         }
         .container {
             max-width: 100%;
@@ -33,77 +35,77 @@
         .auth-card, .admin-card {
             background: white;
             border-radius: 10px;
-            padding: 20px;
-            margin: 15px auto;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.06);
+            padding: 12px;
+            margin: 8px auto;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
             max-width: 600px;
             transition: transform 0.3s ease;
         }
         .admin-card:hover {
-            transform: translateY(-3px);
+            transform: translateY(-2px);
         }
         h1, h2, h3 {
             color: var(--dark);
             text-align: center;
             margin-top: 0;
-            margin-bottom: 15px;
+            margin-bottom: 10px;
         }
         h1 {
             background: linear-gradient(45deg, var(--primary), #f59e0b);
             -webkit-background-clip: text;
             background-clip: text;
             color: transparent;
-            font-size: 1.9rem;
+            font-size: 1.5rem;
         }
         h2 {
-            font-size: 1.5rem;
-            margin-bottom: 12px;
+            font-size: 1.1rem;
+            margin-bottom: 8px;
         }
         .form-group {
-            margin-bottom: 15px;
+            margin-bottom: 10px;
         }
         label {
             display: block;
-            margin-bottom: 6px;
+            margin-bottom: 4px;
             font-weight: bold;
             color: var(--dark);
-            font-size: 0.95rem;
+            font-size: 0.8rem;
         }
         input, textarea, select {
             width: 100%;
-            padding: 10px 12px;
+            padding: 7px 9px;
             border: 1px solid #ddd;
-            border-radius: 6px;
-            font-size: 0.95rem;
+            border-radius: 5px;
+            font-size: 0.8rem;
             transition: all 0.3s;
             background: #f8fafc;
         }
         input:focus, textarea:focus, select:focus {
             border-color: var(--primary);
             outline: none;
-            box-shadow: 0 0 0 2px rgba(249, 115, 22, 0.15);
+            box-shadow: 0 0 0 2px rgba(249, 115, 22, 0.1);
         }
         button {
             background: var(--primary);
             color: white;
             border: none;
-            padding: 10px 20px;
-            border-radius: 6px;
-            font-size: 0.95rem;
+            padding: 7px 12px;
+            border-radius: 5px;
+            font-size: 0.8rem;
             font-weight: bold;
             cursor: pointer;
             transition: all 0.3s;
             width: 100%;
-            margin-top: 8px;
+            margin-top: 5px;
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 6px;
+            gap: 4px;
         }
         button:hover {
             opacity: 0.9;
             transform: translateY(-1px);
-            box-shadow: 0 3px 8px rgba(0,0,0,0.08);
+            box-shadow: 0 2px 6px rgba(0,0,0,0.05);
         }
         .btn-danger {
             background: var(--danger);
@@ -119,26 +121,26 @@
         }
         .product-item {
             background: white;
-            border-radius: 8px;
-            padding: 12px;
-            margin-bottom: 12px;
-            box-shadow: 0 2px 6px rgba(0,0,0,0.08);
-            border-left: 3px solid var(--primary);
+            border-radius: 6px;
+            padding: 8px;
+            margin-bottom: 8px;
+            box-shadow: 0 1px 4px rgba(0,0,0,0.05);
+            border-left: 2px solid var(--primary);
             transition: all 0.3s;
         }
         .product-item:hover {
-            box-shadow: 0 4px 10px rgba(0,0,0,0.12);
+            box-shadow: 0 3px 8px rgba(0,0,0,0.08);
         }
         .product-actions {
             display: flex;
-            gap: 8px;
-            margin-top: 12px;
+            gap: 5px;
+            margin-top: 8px;
         }
         .product-actions button {
             width: auto;
-            padding: 8px 12px;
+            padding: 5px 8px;
             flex: 1;
-            font-size: 0.9rem;
+            font-size: 0.75rem;
         }
         #adminPanel {
             display: none;
@@ -146,94 +148,118 @@
         .logout-btn {
             background: var(--dark);
             width: auto;
-            padding: 9px 20px;
-            margin: 0 auto 20px;
+            padding: 7px 12px;
+            margin: 0 auto 12px;
             display: block;
-            font-size: 0.95rem;
+            font-size: 0.8rem;
         }
         .error-message {
             color: var(--danger);
             text-align: center;
-            margin-top: 12px;
-            padding: 8px;
+            margin-top: 8px;
+            padding: 5px;
             background: rgba(239, 68, 68, 0.1);
-            border-radius: 6px;
-            font-size: 0.9rem;
+            border-radius: 5px;
+            font-size: 0.75rem;
         }
         .success-message {
             color: var(--success);
             text-align: center;
-            margin-top: 12px;
-            padding: 8px;
+            margin-top: 8px;
+            padding: 5px;
             background: rgba(16, 185, 129, 0.1);
-            border-radius: 6px;
-            font-size: 0.9rem;
+            border-radius: 5px;
+            font-size: 0.75rem;
         }
         .product-image {
             width: 100%;
-            max-height: 180px;
+            max-height: 130px;
             object-fit: contain;
-            border-radius: 6px;
-            margin: 8px 0;
+            border-radius: 5px;
+            margin: 5px 0;
             border: 1px solid #eee;
             background: #f8fafc;
-            padding: 4px;
+            padding: 3px;
         }
         .header-logo {
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 8px;
-            margin-bottom: 15px;
+            gap: 5px;
+            margin-bottom: 10px;
         }
         .header-logo i {
-            font-size: 2.2rem;
+            font-size: 1.6rem;
             color: var(--primary);
         }
         .empty-state {
             text-align: center;
-            padding: 25px;
+            padding: 15px;
             color: #64748b;
-            font-size: 0.95rem;
+            font-size: 0.8rem;
         }
         .empty-state i {
-            font-size: 2.5rem;
-            margin-bottom: 12px;
+            font-size: 1.8rem;
+            margin-bottom: 8px;
             color: #cbd5e1;
         }
         .specs-container {
-            margin-top: 15px;
+            margin-top: 10px;
         }
         .spec-item {
             display: flex;
-            gap: 8px;
-            margin-bottom: 8px;
+            gap: 5px;
+            margin-bottom: 5px;
             align-items: center;
         }
         .spec-item input {
             flex: 1;
-            padding: 8px 10px;
+            padding: 5px 7px;
         }
         .spec-item button {
             width: auto;
-            padding: 8px 12px;
+            padding: 5px 8px;
             margin-top: 0;
         }
         .tabs {
             display: flex;
-            margin-bottom: 15px;
+            margin-bottom: 0;
             border-bottom: 1px solid #ddd;
-            font-size: 0.95rem;
+            font-size: 0.75rem;
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: white;
+            padding: 5px;
+            box-shadow: 0 -2px 10px rgba(0,0,0,0.05);
+            z-index: 100;
+            justify-content: space-around;
+            align-items: center;
+            height: 50px;
         }
         .tab {
-            padding: 8px 15px;
+            padding: 5px;
             cursor: pointer;
-            border-bottom: 3px solid transparent;
+            border-bottom: 2px solid transparent;
             transition: all 0.3s;
+            text-align: center;
+            font-size: 0.7rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 2px;
+            flex: 1;
+            min-width: 0;
+            overflow: hidden;
+        }
+        .tab i {
+            font-size: 0.9rem;
         }
         .tab.active {
             border-bottom-color: var(--primary);
             font-weight: bold;
+            color: var(--primary);
         }
         .tab-content {
             display: none;
@@ -242,131 +268,133 @@
             display: block;
         }
         .edit-specs-btn {
-            margin-top: 8px;
+            margin-top: 5px;
         }
         .edit-product-form {
             display: none;
-            margin-top: 15px;
-            padding: 15px;
+            margin-top: 10px;
+            padding: 10px;
             background: #f8fafc;
-            border-radius: 8px;
+            border-radius: 6px;
         }
         .currency-selector {
             display: flex;
-            gap: 10px;
-            margin-top: 6px;
+            gap: 7px;
+            margin-top: 4px;
         }
         .currency-option {
             display: flex;
             align-items: center;
-            gap: 5px;
-            font-size: 0.9rem;
+            gap: 3px;
+            font-size: 0.75rem;
         }
         .products-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-            gap: 15px;
-            margin-top: 15px;
+            grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+            gap: 10px;
+            margin-top: 10px;
         }
         .product-card {
             background: white;
-            border-radius: 8px;
+            border-radius: 6px;
             overflow: hidden;
-            box-shadow: 0 3px 8px rgba(0,0,0,0.08);
+            box-shadow: 0 2px 6px rgba(0,0,0,0.05);
             transition: all 0.3s;
         }
         .product-card:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 10px rgba(0,0,0,0.08);
         }
         .card-image {
             width: 100%;
-            height: 160px;
+            height: 120px;
             object-fit: contain;
             background: #f8fafc;
             border-bottom: 1px solid #eee;
-            padding: 10px;
+            padding: 7px;
         }
         .card-content {
-            padding: 12px;
+            padding: 8px;
         }
         .card-title {
             font-weight: bold;
-            margin: 0 0 5px;
-            font-size: 1.05rem;
+            margin: 0 0 3px;
+            font-size: 0.85rem;
         }
         .card-price {
             color: var(--primary);
             font-weight: bold;
-            font-size: 1.1rem;
-            margin: 0 0 8px;
+            font-size: 0.9rem;
+            margin: 0 0 5px;
         }
         .card-category {
             color: #64748b;
-            font-size: 0.9rem;
-            margin: 0 0 8px;
+            font-size: 0.75rem;
+            margin: 0 0 5px;
         }
         .card-actions {
             display: flex;
-            gap: 8px;
-            margin-top: 10px;
+            gap: 5px;
+            margin-top: 7px;
         }
         .card-actions button {
-            padding: 7px 10px;
-            font-size: 0.85rem;
+            padding: 5px 7px;
+            font-size: 0.75rem;
         }
         .time-inputs {
             display: flex;
-            gap: 10px;
-            margin-top: 10px;
+            gap: 7px;
+            margin-top: 7px;
         }
         .time-inputs input {
             flex: 1;
         }
         .offer-item {
             background: white;
-            border-radius: 8px;
-            padding: 15px;
-            margin-bottom: 15px;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-            border-left: 4px solid var(--success);
+            border-radius: 6px;
+            padding: 10px;
+            margin-bottom: 10px;
+            box-shadow: 0 1px 6px rgba(0,0,0,0.08);
+            border-left: 3px solid var(--success);
         }
         .offer-products {
-            margin-top: 10px;
-            padding-right: 15px;
+            margin-top: 7px;
+            padding-right: 10px;
         }
         .offer-product {
             display: flex;
             justify-content: space-between;
-            margin-bottom: 5px;
+            margin-bottom: 3px;
         }
         .offer-details {
-            margin-top: 10px;
-            padding: 10px;
+            margin-top: 7px;
+            padding: 7px;
             background: #f0fdf4;
-            border-radius: 6px;
+            border-radius: 5px;
         }
         .time-period {
             display: flex;
-            gap: 10px;
-            margin-top: 10px;
+            gap: 7px;
+            margin-top: 7px;
         }
         .time-period-item {
             flex: 1;
         }
         .selected-products {
-            max-height: 200px;
+            max-height: 150px;
             overflow-y: auto;
             border: 1px solid #ddd;
-            border-radius: 6px;
-            padding: 10px;
-            margin-top: 10px;
+            border-radius: 5px;
+            padding: 7px;
+            margin-top: 7px;
+            font-size: 0.75rem;
         }
         .selected-product {
             display: flex;
             justify-content: space-between;
-            padding: 5px 0;
+            padding: 3px 0;
             border-bottom: 1px solid #eee;
+            font-size: 0.75rem;
         }
         .remove-product {
             color: var(--danger);
@@ -374,7 +402,7 @@
         }
         .product-selector {
             display: flex;
-            gap: 10px;
+            gap: 7px;
         }
         .product-selector select {
             flex: 3;
@@ -390,9 +418,237 @@
         .offer-discount-badge {
             background: var(--success);
             color: white;
-            padding: 3px 10px;
-            border-radius: 20px;
+            padding: 2px 7px;
+            border-radius: 15px;
+            font-size: 0.75rem;
+        }
+        .price-calculation {
+            background: #f0f7ff;
+            padding: 10px;
+            border-radius: 6px;
+            margin: 10px 0;
+            font-size: 0.75rem;
+        }
+        .price-row {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 5px;
+        }
+        .price-label {
+            font-weight: bold;
+        }
+        .price-value {
+            color: var(--primary);
+            font-weight: bold;
+        }
+        .discount-calculation {
+            background: #f0fdf4;
+            padding: 7px;
+            border-radius: 5px;
+            margin-top: 7px;
+        }
+        .multi-select-container {
+            position: relative;
+        }
+        .multi-select-checkboxes {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            right: 0;
+            background: white;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            padding: 7px;
+            max-height: 150px;
+            overflow-y: auto;
+            z-index: 10;
+            box-shadow: 0 3px 8px rgba(0,0,0,0.08);
+            font-size: 0.75rem;
+        }
+        .multi-select-item {
+            padding: 3px 0;
+        }
+        .category-section {
+            margin-bottom: 12px;
+        }
+        .category-header {
+            background: #f1f5f9;
+            padding: 7px 10px;
+            border-radius: 5px;
+            font-weight: bold;
+            margin-bottom: 7px;
+            font-size: 0.8rem;
+        }
+        .offers-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+            gap: 10px;
+            margin-top: 10px;
+        }
+        .offer-card {
+            background: white;
+            border-radius: 6px;
+            overflow: hidden;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+            transition: all 0.3s;
+            border-top: 2px solid var(--success);
+        }
+        .offer-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+        }
+        .offer-card-content {
+            padding: 8px;
+        }
+        .offer-card-title {
+            font-weight: bold;
+            margin: 0 0 3px;
+            font-size: 0.85rem;
+        }
+        .offer-card-discount {
+            color: var(--success);
+            font-weight: bold;
             font-size: 0.9rem;
+            margin: 0 0 5px;
+        }
+        .offer-card-products {
+            color: #64748b;
+            font-size: 0.75rem;
+            margin: 0 0 5px;
+        }
+        .offer-card-actions {
+            display: flex;
+            gap: 5px;
+            margin-top: 7px;
+        }
+        .offer-card-actions button {
+            padding: 5px 7px;
+            font-size: 0.75rem;
+        }
+        .multi-select-btn {
+            background: #f8fafc;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            padding: 7px 9px;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 0.75rem;
+        }
+        .multi-select-btn i {
+            transition: transform 0.3s;
+            font-size: 0.8rem;
+        }
+        .multi-select-btn.active i {
+            transform: rotate(180deg);
+        }
+        .expanded-offer-details {
+            display: none;
+            padding: 10px;
+            background: #f9f9f9;
+            border-top: 1px solid #eee;
+            font-size: 0.75rem;
+        }
+        .expanded-offer-details.active {
+            display: block;
+        }
+        .expanded-product-list {
+            margin-top: 7px;
+            padding: 7px;
+            background: #f0fdf4;
+            border-radius: 5px;
+        }
+        .expanded-product-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 3px 0;
+            border-bottom: 1px solid #e2e8f0;
+        }
+        .category-tabs {
+            display: flex;
+            gap: 7px;
+            margin-bottom: 10px;
+            overflow-x: auto;
+            padding-bottom: 4px;
+        }
+        .category-tab {
+            padding: 5px 10px;
+            background: #f1f5f9;
+            border-radius: 20px;
+            cursor: pointer;
+            font-size: 0.75rem;
+            white-space: nowrap;
+            transition: all 0.3s;
+        }
+        .category-tab.active {
+            background: var(--primary);
+            color: white;
+        }
+        .time-remaining {
+            background: #ffedd5;
+            color: #9a3412;
+            padding: 3px 7px;
+            border-radius: 4px;
+            font-size: 0.7rem;
+            margin-top: 5px;
+            display: inline-block;
+        }
+        .auto-delete-container {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-top: 10px;
+        }
+        .auto-delete-container label {
+            margin-bottom: 0;
+            order: 1;
+        }
+        .auto-delete-container input[type="checkbox"] {
+            width: auto;
+            order: 2;
+        }
+        .confirmation-buttons {
+            display: flex;
+            gap: 5px;
+            width: 100%;
+        }
+        .confirmation-buttons button {
+            flex: 1;
+        }
+        .offer-image-preview {
+            width: 100%;
+            max-height: 150px;
+            object-fit: contain;
+            border-radius: 5px;
+            margin-top: 10px;
+            display: none;
+            border: 1px solid #ddd;
+            background: #f8fafc;
+        }
+        .small-products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(80px, 1fr));
+            gap: 8px;
+            margin-top: 10px;
+        }
+        .small-product-card {
+            background: #f8fafc;
+            border-radius: 5px;
+            padding: 5px;
+            text-align: center;
+            font-size: 0.7rem;
+        }
+        .small-product-card img {
+            width: 50px;
+            height: 50px;
+            object-fit: contain;
+            margin: 0 auto;
+        }
+        .offer-header-content {
+            flex: 1;
+            cursor: pointer;
         }
     </style>
 </head>
@@ -424,13 +680,6 @@
             <h1>لوحة تحكم بارت زون</h1>
         </div>
         <button onclick="logout()" class="logout-btn"><i class="fas fa-sign-out-alt"></i> تسجيل الخروج</button>
-        
-        <div class="tabs">
-            <div class="tab active" onclick="openTab('addProductTab')">إضافة منتج</div>
-            <div class="tab" onclick="openTab('productsListTab')">قائمة المنتجات</div>
-            <div class="tab" onclick="openTab('offersTab')">إدارة العروض</div>
-            <div class="tab" onclick="openTab('categoriesTab')">إدارة الفئات</div>
-        </div>
         
         <!-- تبويب إضافة المنتجات -->
         <div id="addProductTab" class="tab-content active">
@@ -468,6 +717,7 @@
                 <div class="form-group">
                     <label for="productImage"><i class="fas fa-image"></i> رابط الصورة</label>
                     <input type="url" id="productImage" placeholder="https://...">
+                    <p style="font-size: 0.7rem; color: #64748b; margin-top: 3px;">اترك الحقل فارغاً لاستخدام صورة افتراضية</p>
                 </div>
                 
                 <div class="specs-container">
@@ -487,13 +737,16 @@
         <div id="productsListTab" class="tab-content">
             <div class="admin-card">
                 <h2><i class="fas fa-boxes"></i> قائمة المنتجات</h2>
-                <div id="productsList" class="products-grid">
+                <div class="category-tabs" id="categoryTabs">
+                    <!-- سيتم ملؤها بالجافاسكريبت -->
+                </div>
+                <div id="productsList">
                     <!-- سيتم عرض المنتجات هنا تلقائيا -->
                 </div>
             </div>
         </div>
         
-        <!-- تبويب إدارة العروض -->
+        <!-- تبويب إضافة العروض -->
         <div id="offersTab" class="tab-content">
             <div class="admin-card">
                 <h2><i class="fas fa-percent"></i> إضافة عرض جديد</h2>
@@ -503,37 +756,58 @@
                 </div>
                 
                 <div class="form-group">
+                    <label for="offerImage"><i class="fas fa-image"></i> رابط صورة العرض</label>
+                    <input type="url" id="offerImage" placeholder="https://...">
+                    <p style="font-size: 0.7rem; color: #64748b; margin-top: 3px;">اترك الحقل فارغاً لاستخدام صورة افتراضية</p>
+                    <img id="offerImagePreview" class="offer-image-preview" alt="معاينة صورة العرض">
+                </div>
+                
+                <div class="form-group">
                     <label for="offerDescription"><i class="fas fa-align-left"></i> تفاصيل العرض</label>
                     <textarea id="offerDescription" rows="2" placeholder="وصف تفاصيل العرض"></textarea>
                 </div>
                 
                 <div class="form-group">
                     <label><i class="fas fa-box"></i> المنتجات المدرجة في العرض</label>
-                    <div class="product-selector">
-                        <select id="offerProduct">
+                    <div class="multi-select-container">
+                        <div class="multi-select-btn" id="multiSelectBtn" onclick="toggleMultiSelect()">
+                            <span>اختر المنتجات</span>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="multi-select-checkboxes" id="multiSelectCheckboxes">
                             <!-- سيتم ملؤها بالجافاسكريبت -->
-                        </select>
-                        <button onclick="addProductToOffer()" class="btn-info"><i class="fas fa-plus"></i> إضافة</button>
+                        </div>
                     </div>
                     <div class="selected-products" id="selectedProductsList">
                         <!-- سيتم عرض المنتجات المختارة هنا -->
                     </div>
                 </div>
                 
-                <div class="form-group">
-                    <label for="offerTotalPrice"><i class="fas fa-money-bill-wave"></i> السعر الإجمالي للعرض</label>
-                    <input type="text" id="offerTotalPrice" placeholder="السعر بعد الخصم">
+                <div class="price-calculation">
+                    <h3><i class="fas fa-calculator"></i> حساب الأسعار</h3>
+                    <div class="price-row">
+                        <span class="price-label">إجمالي سعر المنتجات بدون عرض:</span>
+                        <span class="price-value" id="totalWithoutDiscount">0 ل.س</span>
+                    </div>
+                    <div class="price-row">
+                        <span class="price-label">السعر الإجمالي خلال فترة العرض:</span>
+                        <input type="text" id="totalWithDiscount" placeholder="أدخل السعر بعد الخصم">
+                    </div>
+                    <div class="discount-calculation">
+                        <div class="price-row">
+                            <span class="price-label">نسبة الخصم:</span>
+                            <span class="price-value" id="discountPercentage">0%</span>
+                        </div>
+                        <div class="price-row">
+                            <span class="price-label">قيمة الخصم:</span>
+                            <span class="price-value" id="discountValue">0 ل.س</span>
+                        </div>
+                    </div>
                 </div>
                 
-                <div class="form-group">
-                    <label for="offerDiscount"><i class="fas fa-percent"></i> نسبة الخصم</label>
-                    <input type="number" id="offerDiscount" placeholder="مثال: 20" min="1" max="100">
-                </div>
-                
-                <div class="form-group">
-                    <label for="autoDelete">
-                        <input type="checkbox" id="autoDelete"> تفعيل حذف تلقائي بعد مدة محددة
-                    </label>
+                <div class="auto-delete-container">
+                    <label for="autoDelete">تفعيل حذف تلقائي بعد مدة محددة</label>
+                    <input type="checkbox" id="autoDelete">
                 </div>
                 
                 <div id="timeInputs" style="display: none;">
@@ -552,10 +826,13 @@
                 <button onclick="addOffer()" class="btn-success"><i class="fas fa-save"></i> حفظ العرض</button>
                 <p id="offerMessage" class="success-message"></p>
             </div>
-            
+        </div>
+        
+        <!-- تبويب قائمة العروض -->
+        <div id="currentOffersTab" class="tab-content">
             <div class="admin-card">
-                <h2><i class="fas fa-tags"></i> العروض الحالية</h2>
-                <div id="offersList">
+                <h2><i class="fas fa-tags"></i> قائمة العروض الحالية</h2>
+                <div id="currentOffersList" class="offers-grid">
                     <!-- سيتم عرض العروض هنا -->
                 </div>
             </div>
@@ -578,6 +855,30 @@
                 </div>
                 
                 <p id="categoriesSuccessMessage" class="success-message"></p>
+            </div>
+        </div>
+
+        <!-- شريط التنقل السفلي -->
+        <div class="tabs">
+            <div class="tab active" onclick="openTab('addProductTab')">
+                <i class="fas fa-plus-circle"></i>
+                <span>إضافة منتج</span>
+            </div>
+            <div class="tab" onclick="openTab('productsListTab')">
+                <i class="fas fa-boxes"></i>
+                <span>المنتجات</span>
+            </div>
+            <div class="tab" onclick="openTab('offersTab')">
+                <i class="fas fa-percent"></i>
+                <span>إضافة عرض</span>
+            </div>
+            <div class="tab" onclick="openTab('currentOffersTab')">
+                <i class="fas fa-tags"></i>
+                <span>العروض</span>
+            </div>
+            <div class="tab" onclick="openTab('categoriesTab')">
+                <i class="fas fa-list"></i>
+                <span>الفئات</span>
             </div>
         </div>
     </div>
@@ -620,7 +921,10 @@
         
         let selectedProducts = [];
         let allProducts = {};
-        
+        let autoDeleteTimeouts = {};
+        let currentCategory = "الكل";
+        let originalActionsHTML = {};
+
         // ========== دوال النظام ========== //
 
         // 1. تسجيل الدخول
@@ -666,6 +970,11 @@
             // عند فتح تبويب العروض، تأكد من تحديث قائمة المنتجات
             if (tabId === 'offersTab') {
                 loadProductsForOffers();
+            }
+            
+            // عند فتح تبويب المنتجات، تأكد من تحديث الفئات
+            if (tabId === 'productsListTab') {
+                updateCategoryTabs();
             }
         }
 
@@ -734,71 +1043,26 @@
                         </div>
                     `;
                 } else {
+                    // تجميع المنتجات حسب الفئة
+                    const productsByCategory = {};
+                    
                     snapshot.forEach(child => {
                         const product = child.val();
                         allProducts[child.key] = product;
                         
-                        html += `
-                            <div class="product-card">
-                                ${product.imageUrl ? `<img src="${product.imageUrl}" alt="${product.name}" class="card-image">` : '<div class="card-image"><i class="fas fa-box-open" style="font-size: 3rem; color: #ddd;"></i></div>'}
-                                <div class="card-content">
-                                    <h3 class="card-title">${product.name}</h3>
-                                    <p class="card-price">${product.price}</p>
-                                    <p class="card-category">${product.category}</p>
-                                    <div class="card-actions">
-                                        <button onclick="showEditForm('${child.key}')" class="btn-warning"><i class="fas fa-edit"></i> تعديل</button>
-                                        <button onclick="deleteProduct('${child.key}')" class="btn-danger"><i class="fas fa-trash"></i> حذف</button>
-                                    </div>
-                                </div>
-                                <div id="edit-form-${child.key}" class="edit-product-form">
-                                    <h4>تعديل المنتج</h4>
-                                    <div class="form-group">
-                                        <label>اسم المنتج</label>
-                                        <input type="text" id="edit-name-${child.key}" value="${product.name}">
-                                    </div>
-                                    <div class="form-group">
-                                        <label>السعر</label>
-                                        <input type="text" id="edit-price-${child.key}" value="${product.price.replace(/[^0-9.]/g, '')}">
-                                        <div class="currency-selector">
-                                            <div class="currency-option">
-                                                <input type="radio" id="edit-currency-lira-${child.key}" name="edit-currency-${child.key}" value="ل.س" ${product.price.includes('ل.س') ? 'checked' : ''}>
-                                                <label for="edit-currency-lira-${child.key}">ل.س</label>
-                                            </div>
-                                            <div class="currency-option">
-                                                <input type="radio" id="edit-currency-dollar-${child.key}" name="edit-currency-${child.key}" value="$" ${product.price.includes('$') ? 'checked' : ''}>
-                                                <label for="edit-currency-dollar-${child.key}">$</label>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <label>الفئة</label>
-                                        <select id="edit-category-${child.key}">
-                                            <!-- سيتم ملؤها بالجافاسكريبت -->
-                                        </select>
-                                    </div>
-                                    <div class="form-group">
-                                        <label>الوصف</label>
-                                        <textarea id="edit-description-${child.key}" rows="3">${product.description || ''}</textarea>
-                                    </div>
-                                    <div class="form-group">
-                                        <label>رابط الصورة</label>
-                                        <input type="url" id="edit-image-${child.key}" value="${product.imageUrl || ''}">
-                                    </div>
-                                    <div class="specs-container">
-                                        <h4>المواصفات المخصصة</h4>
-                                        <div id="edit-specs-${child.key}">
-                                            <!-- سيتم ملؤها بالجافاسكريبت -->
-                                        </div>
-                                        <button onclick="addEditSpecField('${child.key}')" class="btn-info"><i class="fas fa-plus"></i> إضافة خاصية جديدة</button>
-                                    </div>
-                                    <div class="product-actions">
-                                        <button onclick="updateProduct('${child.key}')" class="btn-success"><i class="fas fa-save"></i> حفظ التغييرات</button>
-                                        <button onclick="hideEditForm('${child.key}')" class="btn-danger"><i class="fas fa-times"></i> إلغاء</button>
-                                    </div>
-                                </div>
-                            </div>
-                        `;
+                        const category = product.category || 'غير مصنف';
+                        if (!productsByCategory[category]) {
+                            productsByCategory[category] = [];
+                        }
+                        
+                        productsByCategory[category].push({
+                            id: child.key,
+                            ...product
+                        });
                     });
+                    
+                    // عرض المنتجات حسب الفئة المحددة
+                    html = displayProductsByCategory(productsByCategory, currentCategory);
                 }
                 document.getElementById('productsList').innerHTML = html;
                 
@@ -831,26 +1095,168 @@
                     }
                 });
                 
+                // تحديث تبويبات الفئات
+                updateCategoryTabs();
+                
                 // تحميل المنتجات للعروض
                 loadProductsForOffers();
             });
         }
 
-        // 6. حذف منتج
-        function deleteProduct(id) {
-            if(confirm('هل أنت متأكد من حذف هذا المنتج؟ لا يمكن التراجع عن هذه العملية')) {
-                database.ref('products/' + id).remove()
-                .then(() => {
-                    console.log("Product deleted successfully");
-                })
-                .catch((error) => {
-                    console.error("Error deleting product:", error);
-                    alert('حدث خطأ أثناء حذف المنتج');
-                });
+        // 6. عرض المنتجات حسب الفئة
+        function displayProductsByCategory(productsByCategory, category) {
+            let html = '';
+            
+            if (category === "الكل") {
+                // عرض جميع المنتجات
+                for (const [cat, products] of Object.entries(productsByCategory)) {
+                    html += `
+                        <div class="category-section">
+                            <div class="category-header">${cat}</div>
+                            <div class="products-grid">
+                    `;
+                    
+                    products.forEach(product => {
+                        html += renderProductCard(product);
+                    });
+                    
+                    html += `
+                            </div>
+                        </div>
+                    `;
+                }
+            } else {
+                // عرض المنتجات في الفئة المحددة فقط
+                const products = productsByCategory[category] || [];
+                
+                if (products.length === 0) {
+                    html = `
+                        <div class="empty-state">
+                            <i class="fas fa-box-open"></i>
+                            <h3>لا توجد منتجات في هذه الفئة</h3>
+                        </div>
+                    `;
+                } else {
+                    html += '<div class="products-grid">';
+                    
+                    products.forEach(product => {
+                        html += renderProductCard(product);
+                    });
+                    
+                    html += '</div>';
+                }
             }
+            
+            return html;
         }
 
-        // 7. إعادة تعيين النموذج
+        // 7. عرض بطاقة المنتج
+        function renderProductCard(product) {
+            return `
+                <div class="product-card">
+                    ${product.imageUrl ? `<img src="${product.imageUrl}" alt="${product.name}" class="card-image">` : '<div class="card-image"><i class="fas fa-box-open" style="font-size: 2rem; color: #ddd;"></i></div>'}
+                    <div class="card-content">
+                        <h3 class="card-title">${product.name}</h3>
+                        <p class="card-price">${product.price}</p>
+                        <p class="card-category">${product.category}</p>
+                        <div class="card-actions" id="actions-${product.id}">
+                            <button onclick="showEditForm('${product.id}')" class="btn-warning"><i class="fas fa-edit"></i> تعديل</button>
+                            <button onclick="showDeleteConfirmation('${product.id}', 'product')" class="btn-danger"><i class="fas fa-trash"></i> حذف</button>
+                        </div>
+                    </div>
+                    <div id="edit-form-${product.id}" class="edit-product-form">
+                        <h4>تعديل المنتج</h4>
+                        <div class="form-group">
+                            <label>اسم المنتج</label>
+                            <input type="text" id="edit-name-${product.id}" value="${product.name}">
+                        </div>
+                        <div class="form-group">
+                            <label>السعر</label>
+                            <input type="text" id="edit-price-${product.id}" value="${product.price.replace(/[^0-9.]/g, '')}">
+                            <div class="currency-selector">
+                                <div class="currency-option">
+                                    <input type="radio" id="edit-currency-lira-${product.id}" name="edit-currency-${product.id}" value="ل.س" ${product.price.includes('ل.س') ? 'checked' : ''}>
+                                    <label for="edit-currency-lira-${product.id}">ل.س</label>
+                                </div>
+                                <div class="currency-option">
+                                    <input type="radio" id="edit-currency-dollar-${product.id}" name="edit-currency-${product.id}" value="$" ${product.price.includes('$') ? 'checked' : ''}>
+                                    <label for="edit-currency-dollar-${product.id}">$</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label>الفئة</label>
+                            <select id="edit-category-${product.id}">
+                                <!-- سيتم ملؤها بالجافاسكريبت -->
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>الوصف</label>
+                            <textarea id="edit-description-${product.id}" rows="3">${product.description || ''}</textarea>
+                        </div>
+                        <div class="form-group">
+                            <label>رابط الصورة</label>
+                            <input type="url" id="edit-image-${product.id}" value="${product.imageUrl || ''}">
+                        </div>
+                        <div class="specs-container">
+                            <h4>المواصفات المخصصة</h4>
+                            <div id="edit-specs-${product.id}">
+                                <!-- سيتم ملؤها بالجافاسكريبت -->
+                            </div>
+                            <button onclick="addEditSpecField('${product.id}')" class="btn-info"><i class="fas fa-plus"></i> إضافة خاصية جديدة</button>
+                        </div>
+                        <div class="product-actions">
+                            <button onclick="updateProduct('${product.id}')" class="btn-success"><i class="fas fa-save"></i> حفظ التغييرات</button>
+                            <button onclick="hideEditForm('${product.id}')" class="btn-danger"><i class="fas fa-times"></i> إلغاء</button>
+                        </div>
+                    </div>
+                </div>
+            `;
+        }
+
+        // 8. تحديث تبويبات الفئات
+        function updateCategoryTabs() {
+            const categoryTabs = document.getElementById('categoryTabs');
+            categoryTabs.innerHTML = '';
+            
+            // إضافة تبويب "الكل" كاختيار افتراضي
+            const allTab = document.createElement('div');
+            allTab.className = `category-tab ${currentCategory === "الكل" ? 'active' : ''}`;
+            allTab.textContent = 'الكل';
+            allTab.onclick = () => {
+                currentCategory = "الكل";
+                updateCategoryTabs();
+                loadProducts();
+            };
+            categoryTabs.appendChild(allTab);
+            
+            // إضافة تبويبات لكل فئة
+            defaultCategories.forEach(category => {
+                const tab = document.createElement('div');
+                tab.className = `category-tab ${currentCategory === category ? 'active' : ''}`;
+                tab.textContent = category;
+                tab.onclick = () => {
+                    currentCategory = category;
+                    updateCategoryTabs();
+                    loadProducts();
+                };
+                categoryTabs.appendChild(tab);
+            });
+        }
+
+        // 9. حذف منتج
+        function deleteProduct(id) {
+            database.ref('products/' + id).remove()
+            .then(() => {
+                console.log("Product deleted successfully");
+            })
+            .catch((error) => {
+                console.error("Error deleting product:", error);
+                alert('حدث خطأ أثناء حذف المنتج');
+            });
+        }
+
+        // 10. إعادة تعيين النموذج
         function resetForm() {
             document.getElementById('productName').value = '';
             document.getElementById('productPrice').value = '';
@@ -859,7 +1265,7 @@
             document.getElementById('specsList').innerHTML = '';
         }
 
-        // 8. إضافة حقل خاصية جديد
+        // 11. إضافة حقل خاصية جديد
         function addSpecField(name = '', value = '') {
             const specsList = document.getElementById('specsList');
             const specId = Date.now();
@@ -874,7 +1280,7 @@
             specsList.appendChild(specField);
         }
 
-        // 9. حذف حقل خاصية
+        // 12. حذف حقل خاصية
         function removeSpecField(id) {
             const specField = document.getElementById(`spec-${id}`);
             if (specField) {
@@ -882,7 +1288,7 @@
             }
         }
 
-        // 10. تحميل الفئات من قاعدة البيانات
+        // 13. تحميل الفئات من قاعدة البيانات
         function loadCategories() {
             database.ref('categories').once('value').then(snapshot => {
                 const categorySelect = document.getElementById('productCategory');
@@ -904,7 +1310,7 @@
             });
         }
 
-        // 11. عرض قائمة الفئات
+        // 14. عرض قائمة الفئات
         function displayCategoriesList() {
             const categoriesList = document.getElementById('categoriesList');
             categoriesList.innerHTML = '';
@@ -914,14 +1320,16 @@
                 categoryItem.className = 'spec-item';
                 categoryItem.innerHTML = `
                     <input type="text" value="${category}" id="category-${index}">
-                    <button onclick="updateCategory(${index})" class="btn-warning"><i class="fas fa-edit"></i> تعديل</button>
-                    <button onclick="deleteCategory(${index})" class="btn-danger"><i class="fas fa-trash"></i> حذف</button>
+                    <button onclick="updateCategory(${index})" class="btn-warning"><i class="fas fa-save"></i> حفظ</button>
+                    <span id="category-actions-${index}">
+                        <button onclick="showDeleteConfirmation(${index}, 'category')" class="btn-danger"><i class="fas fa-trash"></i> حذف</button>
+                    </span>
                 `;
                 categoriesList.appendChild(categoryItem);
             });
         }
 
-        // 12. إضافة فئة جديدة
+        // 15. إضافة فئة جديدة
         function addCategory() {
             const newCategory = document.getElementById('newCategoryName').value.trim();
             if (!newCategory) {
@@ -939,7 +1347,7 @@
             document.getElementById('newCategoryName').value = '';
         }
 
-        // 13. تحديث فئة
+        // 16. تحديث فئة
         function updateCategory(index) {
             const updatedCategory = document.getElementById(`category-${index}`).value.trim();
             if (!updatedCategory) {
@@ -951,15 +1359,13 @@
             saveCategories();
         }
 
-        // 14. حذف فئة
+        // 17. حذف فئة
         function deleteCategory(index) {
-            if (confirm('هل أنت متأكد من حذف هذه الفئة؟ سيتم حذفها من جميع المنتجات المرتبطة بها.')) {
-                defaultCategories.splice(index, 1);
-                saveCategories();
-            }
+            defaultCategories.splice(index, 1);
+            saveCategories();
         }
 
-        // 15. حفظ الفئات في قاعدة البيانات
+        // 18. حفظ الفئات في قاعدة البيانات
         function saveCategories() {
             database.ref('categories').set(defaultCategories)
                 .then(() => {
@@ -971,17 +1377,17 @@
                 });
         }
 
-        // 16. عرض نموذج التعديل
+        // 19. عرض نموذج التعديل
         function showEditForm(productId) {
             document.getElementById(`edit-form-${productId}`).style.display = 'block';
         }
 
-        // 17. إخفاء نموذج التعديل
+        // 20. إخفاء نموذج التعديل
         function hideEditForm(productId) {
             document.getElementById(`edit-form-${productId}`).style.display = 'none';
         }
 
-        // 18. إضافة حقل خاصية في نموذج التعديل
+        // 21. إضافة حقل خاصية في نموذج التعديل
         function addEditSpecField(productId, name = '', value = '') {
             const specsContainer = document.getElementById(`edit-specs-${productId}`);
             const specId = Date.now();
@@ -996,7 +1402,7 @@
             specsContainer.appendChild(specField);
         }
 
-        // 19. حذف حقل خاصية في نموذج التعديل
+        // 22. حذف حقل خاصية في نموذج التعديل
         function removeEditSpecField(productId, specId) {
             const specField = document.getElementById(`edit-spec-${productId}-${specId}`);
             if (specField) {
@@ -1004,7 +1410,7 @@
             }
         }
 
-        // 20. تحديث المنتج
+        // 23. تحديث المنتج
         function updateProduct(productId) {
             const name = document.getElementById(`edit-name-${productId}`).value;
             const price = document.getElementById(`edit-price-${productId}`).value;
@@ -1046,7 +1452,7 @@
                 const successMessage = document.createElement('div');
                 successMessage.className = 'success-message';
                 successMessage.textContent = 'تم تحديث المنتج بنجاح!';
-                document.getElementById(`product-${productId}`).appendChild(successMessage);
+                document.getElementById(`edit-form-${productId}`).parentElement.appendChild(successMessage);
                 
                 setTimeout(() => {
                     successMessage.remove();
@@ -1058,60 +1464,55 @@
             });
         }
 
-        // 21. تحميل المنتجات للعروض
+        // 24. تحميل المنتجات للعروض
         function loadProductsForOffers() {
-            const productSelect = document.getElementById('offerProduct');
-            productSelect.innerHTML = '';
+            const multiSelectCheckboxes = document.getElementById('multiSelectCheckboxes');
+            multiSelectCheckboxes.innerHTML = '';
             
             if (Object.keys(allProducts).length === 0) {
-                const option = document.createElement('option');
-                option.textContent = 'لا توجد منتجات متاحة';
-                productSelect.appendChild(option);
+                multiSelectCheckboxes.innerHTML = '<p style="text-align: center; color: #64748b;">لا توجد منتجات متاحة</p>';
                 return;
             }
-            
-            // إضافة خيار افتراضي
-            const defaultOption = document.createElement('option');
-            defaultOption.value = '';
-            defaultOption.textContent = 'اختر منتج';
-            productSelect.appendChild(defaultOption);
             
             // إضافة المنتجات
             for (const [id, product] of Object.entries(allProducts)) {
-                const option = document.createElement('option');
-                option.value = id;
-                option.textContent = product.name;
-                productSelect.appendChild(option);
+                const productElement = document.createElement('div');
+                productElement.className = 'multi-select-item';
+                productElement.innerHTML = `
+                    <label>
+                        <input type="checkbox" value="${id}" onchange="toggleProductSelection(this, '${id}')">
+                        ${product.name} (${product.price})
+                    </label>
+                `;
+                multiSelectCheckboxes.appendChild(productElement);
             }
         }
 
-        // 22. إضافة منتج إلى العرض
-        function addProductToOffer() {
-            const productId = document.getElementById('offerProduct').value;
-            if (!productId) {
-                alert('الرجاء اختيار منتج');
-                return;
-            }
-            
+        // 25. تبديل اختيار المنتج
+        function toggleProductSelection(checkbox, productId) {
             const product = allProducts[productId];
             if (!product) return;
             
-            // التحقق من عدم إضافة المنتج مسبقاً
-            if (selectedProducts.some(p => p.id === productId)) {
-                alert('هذا المنتج مضاف بالفعل إلى العرض');
-                return;
+            if (checkbox.checked) {
+                // التحقق من عدم إضافة المنتج مسبقاً
+                if (!selectedProducts.some(p => p.id === productId)) {
+                    selectedProducts.push({
+                        id: productId,
+                        name: product.name,
+                        price: product.price,
+                        imageUrl: product.imageUrl
+                    });
+                }
+            } else {
+                // إزالة المنتج إذا تم إلغاء التحديد
+                selectedProducts = selectedProducts.filter(p => p.id !== productId);
             }
             
-            selectedProducts.push({
-                id: productId,
-                name: product.name,
-                price: product.price
-            });
-            
             updateSelectedProductsList();
+            updatePriceCalculation();
         }
 
-        // 23. تحديث قائمة المنتجات المختارة
+        // 26. تحديث قائمة المنتجات المختارة
         function updateSelectedProductsList() {
             const listContainer = document.getElementById('selectedProductsList');
             listContainer.innerHTML = '';
@@ -1132,23 +1533,86 @@
             });
         }
 
-        // 24. إزالة منتج من العرض
+        // 27. إزالة منتج من العرض
         function removeProductFromOffer(index) {
+            const productId = selectedProducts[index].id;
             selectedProducts.splice(index, 1);
+            
+            // إلغاء تحديد المنتج في القائمة
+            const checkbox = document.querySelector(`#multiSelectCheckboxes input[value="${productId}"]`);
+            if (checkbox) {
+                checkbox.checked = false;
+            }
+            
             updateSelectedProductsList();
+            updatePriceCalculation();
         }
 
-        // 25. إضافة عرض جديد
+        // 28. تبديل عرض قائمة الاختيار المتعدد
+        function toggleMultiSelect() {
+            const checkboxes = document.getElementById('multiSelectCheckboxes');
+            const btn = document.getElementById('multiSelectBtn');
+            
+            if (checkboxes.style.display === 'block') {
+                checkboxes.style.display = 'none';
+                btn.classList.remove('active');
+            } else {
+                checkboxes.style.display = 'block';
+                btn.classList.add('active');
+            }
+        }
+
+        // 29. تحديث حساب الأسعار
+        function updatePriceCalculation() {
+            let totalWithout = 0;
+            
+            selectedProducts.forEach(product => {
+                // استخراج القيمة العددية من سعر المنتج
+                const priceMatch = product.price.match(/(\d+(\.\d+)?)/);
+                if (priceMatch) {
+                    const priceValue = parseFloat(priceMatch[0]);
+                    if (!isNaN(priceValue)) {
+                        totalWithout += priceValue;
+                    }
+                }
+            });
+            
+            document.getElementById('totalWithoutDiscount').textContent = totalWithout.toFixed(0) + ' ل.س';
+            
+            // تحديث الحقول الأخرى
+            const totalWithDiscountInput = document.getElementById('totalWithDiscount');
+            if (totalWithDiscountInput.value) {
+                calculateDiscountFromTotal();
+            }
+        }
+
+        // 30. حساب الخصم بناء على السعر الإجمالي
+        function calculateDiscountFromTotal() {
+            const totalWithoutText = document.getElementById('totalWithoutDiscount').textContent;
+            const totalWithout = parseFloat(totalWithoutText) || 0;
+            const totalWith = parseFloat(document.getElementById('totalWithDiscount').value) || 0;
+            
+            if (totalWithout > 0 && totalWith > 0) {
+                const discountPercentage = ((totalWithout - totalWith) / totalWithout) * 100;
+                const discountValue = totalWithout - totalWith;
+                
+                document.getElementById('discountPercentage').textContent = discountPercentage.toFixed(0) + '%';
+                document.getElementById('discountValue').textContent = discountValue.toFixed(0) + ' ل.س';
+            }
+        }
+
+        // 31. إضافة عرض جديد
         function addOffer() {
             const name = document.getElementById('offerName').value;
+            const imageUrl = document.getElementById('offerImage').value || '';
             const description = document.getElementById('offerDescription').value;
-            const totalPrice = document.getElementById('offerTotalPrice').value;
-            const discount = document.getElementById('offerDiscount').value;
+            const totalWithDiscount = document.getElementById('totalWithDiscount').value;
+            const discountPercentage = document.getElementById('discountPercentage').textContent;
             const autoDelete = document.getElementById('autoDelete').checked;
             const days = document.getElementById('offerDays').value || 0;
             const hours = document.getElementById('offerHours').value || 0;
             
-            if (!name || selectedProducts.length === 0 || !discount) {
+            if (!name || selectedProducts.length === 0 || !totalWithDiscount) {
                 alert('الرجاء إدخال جميع البيانات المطلوبة');
                 return;
             }
@@ -1160,10 +1624,18 @@
             
             const offerData = {
                 name: name,
+                imageUrl: imageUrl,
                 description: description || '',
-                products: selectedProducts,
-                totalPrice: totalPrice || '',
-                discount: parseInt(discount),
+                products: selectedProducts.map(p => ({
+                    id: p.id,
+                    name: p.name,
+                    price: p.price,
+                    imageUrl: p.imageUrl || ''
+                })),
+                totalWithoutDiscount: document.getElementById('totalWithoutDiscount').textContent,
+                totalWithDiscount: totalWithDiscount,
+                discountPercentage: discountPercentage,
+                discountValue: document.getElementById('discountValue').textContent,
                 autoDelete: autoDelete,
                 createdAt: new Date().toISOString()
             };
@@ -1190,6 +1662,14 @@
                     // إعادة تعيين النموذج
                     resetOfferForm();
                     
+                    // إعداد الحذف التلقائي إذا تم تفعيله
+                    if (autoDelete) {
+                        const timeout = (days * 24 * 60 * 60 * 1000) + (hours * 60 * 60 * 1000);
+                        autoDeleteTimeouts[newOfferRef.key] = setTimeout(() => {
+                            deleteOffer(newOfferRef.key);
+                        }, timeout);
+                    }
+                    
                     // إخفاء الرسالة بعد 3 ثواني
                     setTimeout(() => {
                         document.getElementById('offerMessage').textContent = '';
@@ -1203,7 +1683,7 @@
                 });
         }
 
-        // 26. تحميل العروض
+        // 32. تحميل العروض
         function loadOffers() {
             database.ref('offers').on('value', (snapshot) => {
                 let html = '';
@@ -1221,94 +1701,207 @@
                         const offer = child.val();
                         const offerId = child.key;
                         
-                        // عرض المنتجات المدرجة في العرض
-                        let productsHtml = '';
-                        if (offer.products && offer.products.length > 0) {
-                            productsHtml = '<div class="offer-products">';
-                            offer.products.forEach(product => {
-                                productsHtml += `
-                                    <div class="offer-product">
-                                        <span>${product.name}</span>
-                                        <span>${product.price}</span>
-                                    </div>
-                                `;
-                            });
-                            productsHtml += '</div>';
+                        // التحقق من انتهاء مدة العرض
+                        if (offer.autoDelete && offer.endDate) {
+                            const endDate = new Date(offer.endDate);
+                            const now = new Date();
+                            
+                            if (endDate <= now) {
+                                deleteOffer(offerId);
+                                return;
+                            }
+                            
+                            // إعداد الحذف التلقائي إذا لم يكن مضبوطاً
+                            if (!autoDeleteTimeouts[offerId]) {
+                                const diff = endDate - now;
+                                if (diff > 0) {
+                                    autoDeleteTimeouts[offerId] = setTimeout(() => {
+                                        deleteOffer(offerId);
+                                    }, diff);
+                                }
+                            }
                         }
                         
-                        // تفاصيل العرض
-                        let detailsHtml = '';
-                        if (offer.description || offer.totalPrice) {
-                            detailsHtml = '<div class="offer-details">';
-                            if (offer.description) detailsHtml += `<p>${offer.description}</p>`;
-                            if (offer.totalPrice) detailsHtml += `<p><strong>السعر الإجمالي:</strong> ${offer.totalPrice}</p>`;
-                            detailsHtml += '</div>';
-                        }
-                        
-                        // مدة العرض
-                        let timeHtml = '';
-                        if (offer.autoDelete && offer.days !== undefined && offer.hours !== undefined) {
-                            timeHtml = `
-                                <div class="time-period">
-                                    <div class="time-period-item">
-                                        <strong>مدة العرض:</strong> ${offer.days} يوم ${offer.hours} ساعة
-                                    </div>
-                                </div>
-                            `;
-                        }
+                        // عدد المنتجات في العرض
+                        const productCount = offer.products ? offer.products.length : 0;
                         
                         html += `
-                            <div class="offer-item" id="offer-${offerId}">
-                                <div class="offer-header">
-                                    <h3>${offer.name}</h3>
-                                    <div class="offer-discount-badge">خصم ${offer.discount}%</div>
+                            <div class="offer-card">
+                                ${offer.imageUrl ? `<img src="${offer.imageUrl}" alt="${offer.name}" class="card-image">` : '<div class="card-image"><i class="fas fa-tags" style="font-size: 2rem; color: #ddd;"></i></div>'}
+                                <div class="offer-card-content">
+                                    <div class="offer-header-content" onclick="toggleOfferDetails('${offerId}')">
+                                        <h3 class="offer-card-title">${offer.name}</h3>
+                                        <p class="offer-card-discount">خصم ${offer.discountPercentage}</p>
+                                        <p class="offer-card-products">${productCount} منتج${productCount > 1 ? 'ات' : ''}</p>
+                                        
+                                        ${offer.autoDelete && offer.endDate ? `
+                                            <div class="time-remaining">
+                                                <i class="fas fa-clock"></i> الوقت المتبقي: 
+                                                <span id="time-remaining-${offerId}"></span>
+                                            </div>
+                                        ` : ''}
+                                    </div>
+                                    <div class="offer-card-actions" id="actions-${offerId}">
+                                        <button onclick="toggleOfferDetails('${offerId}')" class="btn-info">
+                                            <i class="fas fa-info-circle"></i> التفاصيل
+                                        </button>
+                                        <button onclick="showDeleteConfirmation('${offerId}', 'offer')" class="btn-danger">
+                                            <i class="fas fa-trash"></i> حذف
+                                        </button>
+                                    </div>
                                 </div>
-                                ${productsHtml}
-                                ${detailsHtml}
-                                ${timeHtml}
-                                <div class="product-actions">
-                                    <button onclick="deleteOffer('${offerId}')" class="btn-danger">
-                                        <i class="fas fa-trash"></i> حذف العرض
-                                    </button>
+                                <div id="expanded-offer-${offerId}" class="expanded-offer-details">
+                                    <h4>تفاصيل العرض</h4>
+                                    <p>${offer.description || 'لا يوجد وصف'}</p>
+                                    
+                                    <div class="price-calculation">
+                                        <div class="price-row">
+                                            <span class="price-label">السعر الإجمالي بدون عرض:</span>
+                                            <span class="price-value">${offer.totalWithoutDiscount}</span>
+                                        </div>
+                                        <div class="price-row">
+                                            <span class="price-label">السعر بعد الخصم:</span>
+                                            <span class="price-value">${offer.totalWithDiscount} ل.س</span>
+                                        </div>
+                                        <div class="discount-calculation">
+                                            <div class="price-row">
+                                                <span class="price-label">نسبة الخصم:</span>
+                                                <span class="price-value">${offer.discountPercentage}</span>
+                                            </div>
+                                            <div class="price-row">
+                                                <span class="price-label">قيمة الخصم:</span>
+                                                <span class="price-value">${offer.discountValue}</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                    <h4>المنتجات المدرجة</h4>
+                                    <div class="small-products-grid">
+                                        ${offer.products ? offer.products.map(p => `
+                                            <div class="small-product-card">
+                                                ${p.imageUrl ? `<img src="${p.imageUrl}" alt="${p.name}">` : '<i class="fas fa-box-open"></i>'}
+                                                <div>${p.name}</div>
+                                                <div>${p.price}</div>
+                                            </div>
+                                        `).join('') : 'لا توجد منتجات'}
+                                    </div>
+                                    
+                                    ${offer.autoDelete ? `
+                                        <div class="time-period" style="margin-top: 15px;">
+                                            <div class="time-period-item">
+                                                <strong>مدة العرض:</strong> ${offer.days} يوم ${offer.hours} ساعة
+                                            </div>
+                                        </div>
+                                    ` : ''}
                                 </div>
                             </div>
                         `;
                     });
                 }
                 
-                document.getElementById('offersList').innerHTML = html;
+                document.getElementById('currentOffersList').innerHTML = html;
+                
+                // تحديث العدادات للعروض المؤقتة
+                updateOfferTimers();
             });
         }
 
-        // 27. حذف عرض
-        function deleteOffer(offerId) {
-            if (confirm('هل أنت متأكد من حذف هذا العرض؟ لا يمكن التراجع عن هذه العملية')) {
-                database.ref('offers/' + offerId).remove()
-                    .then(() => {
-                        console.log("Offer deleted successfully");
-                    })
-                    .catch((error) => {
-                        console.error("Error deleting offer:", error);
-                        alert('حدث خطأ أثناء حذف العرض');
-                    });
-            }
+        // 33. تحديث عدادات الوقت للعروض
+        function updateOfferTimers() {
+            database.ref('offers').once('value').then(snapshot => {
+                if (!snapshot.exists()) return;
+                
+                snapshot.forEach(child => {
+                    const offer = child.val();
+                    if (!offer.autoDelete || !offer.endDate) return;
+                    
+                    const endDate = new Date(offer.endDate);
+                    updateTimer(endDate, `time-remaining-${child.key}`);
+                });
+            });
         }
 
-        // 28. إعادة تعيين نموذج العرض
+        // 34. تحديث عداد الوقت
+        function updateTimer(endDate, elementId) {
+            const timerElement = document.getElementById(elementId);
+            if (!timerElement) return;
+            
+            function update() {
+                const now = new Date();
+                const diff = endDate - now;
+                
+                if (diff <= 0) {
+                    timerElement.textContent = 'انتهى العرض';
+                    return;
+                }
+                
+                const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+                const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+                const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+                
+                timerElement.textContent = `${days} يوم ${hours} ساعة ${minutes} دقيقة ${seconds} ثانية`;
+                
+                setTimeout(update, 1000);
+            }
+            
+            update();
+        }
+
+        // 35. تبديل تفاصيل العرض
+        function toggleOfferDetails(offerId) {
+            const details = document.getElementById(`expanded-offer-${offerId}`);
+            details.classList.toggle('active');
+        }
+
+        // 36. حذف عرض
+        function deleteOffer(offerId) {
+            database.ref('offers/' + offerId).remove()
+                .then(() => {
+                    console.log("Offer deleted successfully");
+                    
+                    // إلغاء أي حذف تلقائي مخطط له
+                    if (autoDeleteTimeouts[offerId]) {
+                        clearTimeout(autoDeleteTimeouts[offerId]);
+                        delete autoDeleteTimeouts[offerId];
+                    }
+                })
+                .catch((error) => {
+                    console.error("Error deleting offer:", error);
+                    alert('حدث خطأ أثناء حذف العرض');
+                });
+        }
+
+        // 37. إعادة تعيين نموذج العرض
         function resetOfferForm() {
             document.getElementById('offerName').value = '';
+            document.getElementById('offerImage').value = '';
+            document.getElementById('offerImagePreview').style.display = 'none';
             document.getElementById('offerDescription').value = '';
-            document.getElementById('offerTotalPrice').value = '';
-            document.getElementById('offerDiscount').value = '';
+            document.getElementById('totalWithDiscount').value = '';
             document.getElementById('autoDelete').checked = false;
             document.getElementById('timeInputs').style.display = 'none';
             document.getElementById('offerDays').value = '';
             document.getElementById('offerHours').value = '';
+            document.getElementById('discountPercentage').textContent = '0%';
+            document.getElementById('discountValue').textContent = '0 ل.س';
+            
+            // إلغاء تحديد جميع المنتجات
+            const checkboxes = document.querySelectorAll('#multiSelectCheckboxes input[type="checkbox"]');
+            checkboxes.forEach(checkbox => {
+                checkbox.checked = false;
+            });
+            
             selectedProducts = [];
             updateSelectedProductsList();
+            updatePriceCalculation();
+            
+            // إغلاق قائمة الاختيار المتعدد
+            document.getElementById('multiSelectCheckboxes').style.display = 'none';
+            document.getElementById('multiSelectBtn').classList.remove('active');
         }
 
-        // 29. تتبع حالة المستخدم
+        // 38. تتبع حالة المستخدم
         auth.onAuthStateChanged(user => {
             if (user) {
                 document.getElementById('authPanel').style.display = 'none';
@@ -1322,10 +1915,65 @@
             }
         });
         
-        // 30. تفعيل/تعطيل حقل التاريخ للعروض
+        // 39. تفعيل/تعطيل حقل التاريخ للعروض
         document.getElementById('autoDelete').addEventListener('change', function() {
             document.getElementById('timeInputs').style.display = this.checked ? 'block' : 'none';
         });
+        
+        // 40. تحديث حساب الخصم عند تغيير السعر الإجمالي
+        document.getElementById('totalWithDiscount').addEventListener('input', function() {
+            calculateDiscountFromTotal();
+        });
+        
+        // 41. عرض معاينة صورة العرض
+        document.getElementById('offerImage').addEventListener('input', function() {
+            const preview = document.getElementById('offerImagePreview');
+            if (this.value) {
+                preview.src = this.value;
+                preview.style.display = 'block';
+            } else {
+                preview.style.display = 'none';
+            }
+        });
+
+        // 42. تأكيد الحذف مع زر التراجع
+        function showDeleteConfirmation(id, type) {
+            let containerId;
+            if (type === 'product' || type === 'offer') {
+                containerId = `actions-${id}`;
+            } else if (type === 'category') {
+                containerId = `category-actions-${id}`;
+            }
+
+            const container = document.getElementById(containerId);
+            if (!container) return;
+
+            // Save the original HTML
+            originalActionsHTML[containerId] = container.innerHTML;
+
+            // Set the confirmation buttons
+            container.innerHTML = `
+                <div class="confirmation-buttons">
+                    <button onclick="delete${type.charAt(0).toUpperCase() + type.slice(1)}('${id}')" class="btn-danger"><i class="fas fa-trash"></i> تأكيد</button>
+                    <button onclick="cancelDelete('${id}', '${type}')" class="btn-info"><i class="fas fa-times"></i> الغاء</button>
+                </div>
+            `;
+        }
+
+        // 43. التراجع عن تأكيد الحذف
+        function cancelDelete(id, type) {
+            let containerId;
+            if (type === 'product' || type === 'offer') {
+                containerId = `actions-${id}`;
+            } else if (type === 'category') {
+                containerId = `category-actions-${id}`;
+            }
+
+            const container = document.getElementById(containerId);
+            if (container && originalActionsHTML[containerId]) {
+                container.innerHTML = originalActionsHTML[containerId];
+            }
+        }
     </script>
 </body>
 </html>

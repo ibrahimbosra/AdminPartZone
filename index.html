@@ -650,6 +650,52 @@
             flex: 1;
             cursor: pointer;
         }
+        /* التعديلات الجديدة */
+        .product-entry-method {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 10px;
+        }
+        .product-entry-option {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            font-size: 0.8rem;
+        }
+        .manual-entry-section {
+            display: none;
+            margin-top: 10px;
+        }
+        .product-search-container {
+            position: relative;
+            margin-bottom: 8px;
+        }
+        .product-search-container i {
+            position: absolute;
+            left: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #64748b;
+        }
+        .product-search {
+            width: 100%;
+            padding: 7px 9px 7px 30px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 0.8rem;
+        }
+        .multi-select-item.selected {
+            text-decoration: line-through;
+            color: #888;
+            cursor: pointer;
+        }
+        .multi-select-item {
+            cursor: pointer;
+        }
+        .total-input-enabled {
+            background-color: #f0f7ff;
+            border: 1px solid #3b82f6;
+        }
     </style>
 </head>
 <body>
@@ -767,19 +813,54 @@
                     <textarea id="offerDescription" rows="2" placeholder="وصف تفاصيل العرض"></textarea>
                 </div>
                 
+                <!-- طريقة إضافة المنتجات -->
                 <div class="form-group">
-                    <label><i class="fas fa-box"></i> المنتجات المدرجة في العرض</label>
-                    <div class="multi-select-container">
-                        <div class="multi-select-btn" id="multiSelectBtn" onclick="toggleMultiSelect()">
-                            <span>اختر المنتجات</span>
-                            <i class="fas fa-chevron-down"></i>
+                    <label><i class="fas fa-box"></i> طريقة إضافة المنتجات</label>
+                    <div class="product-entry-method">
+                        <div class="product-entry-option">
+                            <input type="radio" id="productMethodList" name="productMethod" value="list" checked onchange="changeProductMethod()">
+                            <label for="productMethodList">القائمة</label>
                         </div>
-                        <div class="multi-select-checkboxes" id="multiSelectCheckboxes">
-                            <!-- سيتم ملؤها بالجافاسكريبت -->
+                        <div class="product-entry-option">
+                            <input type="radio" id="productMethodManual" name="productMethod" value="manual" onchange="changeProductMethod()">
+                            <label for="productMethodManual">يدوي</label>
+                        </div>
+                        <div class="product-entry-option">
+                            <input type="radio" id="productMethodNone" name="productMethod" value="none" onchange="changeProductMethod()">
+                            <label for="productMethodNone">بدون</label>
                         </div>
                     </div>
-                    <div class="selected-products" id="selectedProductsList">
-                        <!-- سيتم عرض المنتجات المختارة هنا -->
+                </div>
+                
+                <!-- قسم إضافة المنتجات يدويًا -->
+                <div id="manualProductEntry" class="manual-entry-section">
+                    <div class="form-group">
+                        <label for="manualProducts"><i class="fas fa-pen"></i> قائمة المنتجات (يدوي)</label>
+                        <textarea id="manualProducts" rows="3" placeholder="ادخل أسماء المنتجات ومواصفاتها..."></textarea>
+                    </div>
+                </div>
+                
+                <!-- قسم اختيار المنتجات من القائمة -->
+                <div id="listProductSelection">
+                    <div class="form-group">
+                        <label><i class="fas fa-box"></i> المنتجات المدرجة في العرض</label>
+                        <div class="multi-select-container">
+                            <div class="multi-select-btn" id="multiSelectBtn" onclick="toggleMultiSelect()">
+                                <span>اختر المنتجات</span>
+                                <i class="fas fa-chevron-down"></i>
+                            </div>
+                            <div class="multi-select-checkboxes" id="multiSelectCheckboxes">
+                                <!-- شريط البحث -->
+                                <div class="product-search-container">
+                                    <i class="fas fa-search"></i>
+                                    <input type="text" class="product-search" id="productSearch" placeholder="ابحث عن منتج..." oninput="filterProducts()">
+                                </div>
+                                <!-- سيتم ملؤها بالجافاسكريبت -->
+                            </div>
+                        </div>
+                        <div class="selected-products" id="selectedProductsList">
+                            <!-- سيتم عرض المنتجات المختارة هنا -->
+                        </div>
                     </div>
                 </div>
                 
@@ -1108,28 +1189,37 @@
             let html = '';
             
             if (category === "الكل") {
-                // عرض جميع المنتجات
+                // عرض جميع المنتجات في قائمة واحدة مرتبة أبجدياً
+                const allProductsList = [];
                 for (const [cat, products] of Object.entries(productsByCategory)) {
-                    html += `
-                        <div class="category-section">
-                            <div class="category-header">${cat}</div>
-                            <div class="products-grid">
+                    allProductsList.push(...products);
+                }
+                
+                // ترتيب المنتجات أبجدياً
+                const sortedProducts = [...allProductsList].sort((a, b) => a.name.localeCompare(b.name));
+                
+                if (sortedProducts.length === 0) {
+                    html = `
+                        <div class="empty-state">
+                            <i class="fas fa-box-open"></i>
+                            <h3>لا توجد منتجات</h3>
+                        </div>
                     `;
+                } else {
+                    html += '<div class="products-grid">';
                     
-                    products.forEach(product => {
+                    sortedProducts.forEach(product => {
                         html += renderProductCard(product);
                     });
                     
-                    html += `
-                            </div>
-                        </div>
-                    `;
+                    html += '</div>';
                 }
             } else {
                 // عرض المنتجات في الفئة المحددة فقط
                 const products = productsByCategory[category] || [];
+                const sortedProducts = [...products].sort((a, b) => a.name.localeCompare(b.name));
                 
-                if (products.length === 0) {
+                if (sortedProducts.length === 0) {
                     html = `
                         <div class="empty-state">
                             <i class="fas fa-box-open"></i>
@@ -1139,7 +1229,7 @@
                 } else {
                     html += '<div class="products-grid">';
                     
-                    products.forEach(product => {
+                    sortedProducts.forEach(product => {
                         html += renderProductCard(product);
                     });
                     
@@ -1474,45 +1564,81 @@
                 return;
             }
             
+            // إضافة شريط البحث
+            multiSelectCheckboxes.innerHTML = `
+                <div class="product-search-container">
+                    <i class="fas fa-search"></i>
+                    <input type="text" class="product-search" id="productSearch" placeholder="ابحث عن منتج..." oninput="filterProducts()">
+                </div>
+            `;
+            
             // إضافة المنتجات
-            for (const [id, product] of Object.entries(allProducts)) {
+            const productsContainer = document.createElement('div');
+            productsContainer.id = 'productsContainer';
+            multiSelectCheckboxes.appendChild(productsContainer);
+            
+            // ترتيب المنتجات أبجديًا
+            const sortedProductIds = Object.keys(allProducts).sort((a, b) => 
+                allProducts[a].name.localeCompare(allProducts[b].name)
+            );
+            
+            sortedProductIds.forEach(id => {
+                const product = allProducts[id];
                 const productElement = document.createElement('div');
                 productElement.className = 'multi-select-item';
+                productElement.setAttribute('data-product-id', id);
                 productElement.innerHTML = `
-                    <label>
-                        <input type="checkbox" value="${id}" onchange="toggleProductSelection(this, '${id}')">
+                    <span onclick="toggleProductSelection('${id}')">
                         ${product.name} (${product.price})
-                    </label>
+                    </span>
                 `;
-                multiSelectCheckboxes.appendChild(productElement);
-            }
+                productsContainer.appendChild(productElement);
+            });
         }
 
-        // 25. تبديل اختيار المنتج
-        function toggleProductSelection(checkbox, productId) {
+        // 25. تصفية المنتجات في قائمة الاختيار
+        function filterProducts() {
+            const searchTerm = document.getElementById('productSearch').value.toLowerCase();
+            const productItems = document.querySelectorAll('#productsContainer .multi-select-item');
+            
+            productItems.forEach(item => {
+                const productId = item.getAttribute('data-product-id');
+                const product = allProducts[productId];
+                if (product && product.name.toLowerCase().includes(searchTerm)) {
+                    item.style.display = 'block';
+                } else {
+                    item.style.display = 'none';
+                }
+            });
+        }
+
+        // 26. تبديل اختيار المنتج
+        function toggleProductSelection(productId) {
             const product = allProducts[productId];
             if (!product) return;
             
-            if (checkbox.checked) {
-                // التحقق من عدم إضافة المنتج مسبقاً
-                if (!selectedProducts.some(p => p.id === productId)) {
-                    selectedProducts.push({
-                        id: productId,
-                        name: product.name,
-                        price: product.price,
-                        imageUrl: product.imageUrl
-                    });
-                }
-            } else {
-                // إزالة المنتج إذا تم إلغاء التحديد
+            const productElement = document.querySelector(`#productsContainer .multi-select-item[data-product-id="${productId}"]`);
+            
+            if (selectedProducts.some(p => p.id === productId)) {
+                // إزالة المنتج إذا تم اختياره مسبقًا
                 selectedProducts = selectedProducts.filter(p => p.id !== productId);
+                productElement.classList.remove('selected');
+            } else {
+                // إضافة المنتج
+                selectedProducts.push({
+                    id: productId,
+                    name: product.name,
+                    price: product.price,
+                    imageUrl: product.imageUrl
+                });
+                productElement.classList.add('selected');
             }
             
             updateSelectedProductsList();
             updatePriceCalculation();
         }
 
-        // 26. تحديث قائمة المنتجات المختارة
+        // 27. تحديث قائمة المنتجات المختارة
         function updateSelectedProductsList() {
             const listContainer = document.getElementById('selectedProductsList');
             listContainer.innerHTML = '';
@@ -1533,22 +1659,22 @@
             });
         }
 
-        // 27. إزالة منتج من العرض
+        // 28. إزالة منتج من العرض
         function removeProductFromOffer(index) {
             const productId = selectedProducts[index].id;
             selectedProducts.splice(index, 1);
             
             // إلغاء تحديد المنتج في القائمة
-            const checkbox = document.querySelector(`#multiSelectCheckboxes input[value="${productId}"]`);
-            if (checkbox) {
-                checkbox.checked = false;
+            const productElement = document.querySelector(`#productsContainer .multi-select-item[data-product-id="${productId}"]`);
+            if (productElement) {
+                productElement.classList.remove('selected');
             }
             
             updateSelectedProductsList();
             updatePriceCalculation();
         }
 
-        // 28. تبديل عرض قائمة الاختيار المتعدد
+        // 29. تبديل عرض قائمة الاختيار المتعدد
         function toggleMultiSelect() {
             const checkboxes = document.getElementById('multiSelectCheckboxes');
             const btn = document.getElementById('multiSelectBtn');
@@ -1562,7 +1688,7 @@
             }
         }
 
-        // 29. تحديث حساب الأسعار
+        // 30. تحديث حساب الأسعار
         function updatePriceCalculation() {
             let totalWithout = 0;
             
@@ -1586,22 +1712,45 @@
             }
         }
 
-        // 30. حساب الخصم بناء على السعر الإجمالي
-        function calculateDiscountFromTotal() {
-            const totalWithoutText = document.getElementById('totalWithoutDiscount').textContent;
-            const totalWithout = parseFloat(totalWithoutText) || 0;
-            const totalWith = parseFloat(document.getElementById('totalWithDiscount').value) || 0;
+        // 31. تغيير طريقة إضافة المنتجات
+        function changeProductMethod() {
+            const method = document.querySelector('input[name="productMethod"]:checked').value;
             
-            if (totalWithout > 0 && totalWith > 0) {
-                const discountPercentage = ((totalWithout - totalWith) / totalWithout) * 100;
-                const discountValue = totalWithout - totalWith;
-                
-                document.getElementById('discountPercentage').textContent = discountPercentage.toFixed(0) + '%';
-                document.getElementById('discountValue').textContent = discountValue.toFixed(0) + ' ل.س';
+            // إخفاء جميع الأقسام أولاً
+            document.getElementById('listProductSelection').style.display = 'none';
+            document.getElementById('manualProductEntry').style.display = 'none';
+            
+            // إعادة تعيين حقل الإجمالي
+            document.getElementById('totalWithoutDiscount').textContent = '0 ل.س';
+            document.getElementById('discountPercentage').textContent = '0%';
+            document.getElementById('discountValue').textContent = '0 ل.س';
+            
+            // تفعيل أو تعطيل حقل الإجمالي اليدوي
+            const totalWithoutElement = document.getElementById('totalWithoutDiscount');
+            if (method === 'manual' || method === 'none') {
+                totalWithoutElement.classList.add('total-input-enabled');
+                totalWithoutElement.setAttribute('contenteditable', 'true');
+                totalWithoutElement.style.cursor = 'text';
+            } else {
+                totalWithoutElement.classList.remove('total-input-enabled');
+                totalWithoutElement.removeAttribute('contenteditable');
+                totalWithoutElement.style.cursor = 'default';
+            }
+            
+            // إظهار القسم المناسب
+            if (method === 'list') {
+                document.getElementById('listProductSelection').style.display = 'block';
+            } else if (method === 'manual') {
+                document.getElementById('manualProductEntry').style.display = 'block';
+            }
+            
+            // إذا كان الخيار "بدون"، إظهار رسالة
+            if (method === 'none') {
+                document.getElementById('totalWithoutDiscount').textContent = 'أدخل السعر الإجمالي';
             }
         }
 
-        // 31. إضافة عرض جديد
+        // 32. إضافة عرض جديد
         function addOffer() {
             const name = document.getElementById('offerName').value;
             const imageUrl = document.getElementById('offerImage').value || '';
@@ -1612,9 +1761,48 @@
             const days = document.getElementById('offerDays').value || 0;
             const hours = document.getElementById('offerHours').value || 0;
             
-            if (!name || selectedProducts.length === 0 || !totalWithDiscount) {
-                alert('الرجاء إدخال جميع البيانات المطلوبة');
+            if (!name) {
+                alert('الرجاء إدخال اسم العرض');
                 return;
+            }
+            
+            const method = document.querySelector('input[name="productMethod"]:checked').value;
+            let products = [];
+            let totalWithoutDiscount = '0 ل.س';
+            
+            if (method === 'list') {
+                if (selectedProducts.length === 0) {
+                    alert('الرجاء اختيار المنتجات من القائمة');
+                    return;
+                }
+                
+                products = selectedProducts.map(p => ({
+                    id: p.id,
+                    name: p.name,
+                    price: p.price,
+                    imageUrl: p.imageUrl || ''
+                }));
+                
+                totalWithoutDiscount = document.getElementById('totalWithoutDiscount').textContent;
+            } else if (method === 'manual') {
+                const manualProducts = document.getElementById('manualProducts').value;
+                
+                if (!manualProducts) {
+                    alert('الرجاء إدخال المنتجات يدويًا');
+                    return;
+                }
+                
+                // إنشاء منتج وهمي للعرض اليدوي
+                products = [{
+                    id: 'manual_' + Date.now(),
+                    name: 'منتجات مضافة يدويًا',
+                    price: '0 ل.س',
+                    imageUrl: ''
+                }];
+                
+                totalWithoutDiscount = document.getElementById('totalWithoutDiscount').textContent;
+            } else if (method === 'none') {
+                totalWithoutDiscount = document.getElementById('totalWithoutDiscount').textContent;
             }
             
             if (autoDelete && days == 0 && hours == 0) {
@@ -1626,18 +1814,14 @@
                 name: name,
                 imageUrl: imageUrl,
                 description: description || '',
-                products: selectedProducts.map(p => ({
-                    id: p.id,
-                    name: p.name,
-                    price: p.price,
-                    imageUrl: p.imageUrl || ''
-                })),
-                totalWithoutDiscount: document.getElementById('totalWithoutDiscount').textContent,
-                totalWithDiscount: totalWithDiscount,
+                products: products,
+                totalWithoutDiscount: totalWithoutDiscount,
+                totalWithDiscount: totalWithDiscount || '',
                 discountPercentage: discountPercentage,
                 discountValue: document.getElementById('discountValue').textContent,
                 autoDelete: autoDelete,
-                createdAt: new Date().toISOString()
+                createdAt: new Date().toISOString(),
+                method: method
             };
             
             if (autoDelete) {
@@ -1683,7 +1867,7 @@
                 });
         }
 
-        // 32. تحميل العروض
+        // 33. تحميل العروض
         function loadOffers() {
             database.ref('offers').on('value', (snapshot) => {
                 let html = '';
@@ -1732,7 +1916,7 @@
                                     <div class="offer-header-content" onclick="toggleOfferDetails('${offerId}')">
                                         <h3 class="offer-card-title">${offer.name}</h3>
                                         <p class="offer-card-discount">خصم ${offer.discountPercentage}</p>
-                                        <p class="offer-card-products">${productCount} منتج${productCount > 1 ? 'ات' : ''}</p>
+                                        <p class="offer-card-products">${offer.method === 'manual' ? 'منتجات يدوية' : offer.method === 'none' ? 'بدون منتجات' : (productCount + ' منتج' + (productCount > 1 ? 'ات' : ''))}</p>
                                         
                                         ${offer.autoDelete && offer.endDate ? `
                                             <div class="time-remaining">
@@ -1761,7 +1945,7 @@
                                         </div>
                                         <div class="price-row">
                                             <span class="price-label">السعر بعد الخصم:</span>
-                                            <span class="price-value">${offer.totalWithDiscount} ل.س</span>
+                                            <span class="price-value">${offer.totalWithDiscount || 'غير محدد'} ل.س</span>
                                         </div>
                                         <div class="discount-calculation">
                                             <div class="price-row">
@@ -1775,16 +1959,12 @@
                                         </div>
                                     </div>
                                     
-                                    <h4>المنتجات المدرجة</h4>
-                                    <div class="small-products-grid">
-                                        ${offer.products ? offer.products.map(p => `
-                                            <div class="small-product-card">
-                                                ${p.imageUrl ? `<img src="${p.imageUrl}" alt="${p.name}">` : '<i class="fas fa-box-open"></i>'}
-                                                <div>${p.name}</div>
-                                                <div>${p.price}</div>
-                                            </div>
-                                        `).join('') : 'لا توجد منتجات'}
-                                    </div>
+                                    ${offer.method === 'manual' ? `
+                                        <h4>تفاصيل المنتجات اليدوية</h4>
+                                        <div style="padding: 10px; background: #f0fdf4; border-radius: 5px;">
+                                            <pre>${offer.products && offer.products[0] ? offer.products[0].name : 'لا توجد تفاصيل'}</pre>
+                                        </div>
+                                    ` : ''}
                                     
                                     ${offer.autoDelete ? `
                                         <div class="time-period" style="margin-top: 15px;">
@@ -1806,7 +1986,7 @@
             });
         }
 
-        // 33. تحديث عدادات الوقت للعروض
+        // 34. تحديث عدادات الوقت للعروض
         function updateOfferTimers() {
             database.ref('offers').once('value').then(snapshot => {
                 if (!snapshot.exists()) return;
@@ -1821,7 +2001,7 @@
             });
         }
 
-        // 34. تحديث عداد الوقت
+        // 35. تحديث عداد الوقت
         function updateTimer(endDate, elementId) {
             const timerElement = document.getElementById(elementId);
             if (!timerElement) return;
@@ -1848,13 +2028,13 @@
             update();
         }
 
-        // 35. تبديل تفاصيل العرض
+        // 36. تبديل تفاصيل العرض
         function toggleOfferDetails(offerId) {
             const details = document.getElementById(`expanded-offer-${offerId}`);
             details.classList.toggle('active');
         }
 
-        // 36. حذف عرض
+        // 37. حذف عرض
         function deleteOffer(offerId) {
             database.ref('offers/' + offerId).remove()
                 .then(() => {
@@ -1872,7 +2052,7 @@
                 });
         }
 
-        // 37. إعادة تعيين نموذج العرض
+        // 38. إعادة تعيين نموذج العرض
         function resetOfferForm() {
             document.getElementById('offerName').value = '';
             document.getElementById('offerImage').value = '';
@@ -1885,11 +2065,12 @@
             document.getElementById('offerHours').value = '';
             document.getElementById('discountPercentage').textContent = '0%';
             document.getElementById('discountValue').textContent = '0 ل.س';
+            document.getElementById('manualProducts').value = '';
             
             // إلغاء تحديد جميع المنتجات
-            const checkboxes = document.querySelectorAll('#multiSelectCheckboxes input[type="checkbox"]');
-            checkboxes.forEach(checkbox => {
-                checkbox.checked = false;
+            const productItems = document.querySelectorAll('#productsContainer .multi-select-item');
+            productItems.forEach(item => {
+                item.classList.remove('selected');
             });
             
             selectedProducts = [];
@@ -1899,9 +2080,13 @@
             // إغلاق قائمة الاختيار المتعدد
             document.getElementById('multiSelectCheckboxes').style.display = 'none';
             document.getElementById('multiSelectBtn').classList.remove('active');
+            
+            // إعادة تعيين طريقة الإدخال إلى "من القائمة"
+            document.getElementById('productMethodList').checked = true;
+            changeProductMethod();
         }
 
-        // 38. تتبع حالة المستخدم
+        // 39. تتبع حالة المستخدم
         auth.onAuthStateChanged(user => {
             if (user) {
                 document.getElementById('authPanel').style.display = 'none';
@@ -1915,17 +2100,17 @@
             }
         });
         
-        // 39. تفعيل/تعطيل حقل التاريخ للعروض
+        // 40. تفعيل/تعطيل حقل التاريخ للعروض
         document.getElementById('autoDelete').addEventListener('change', function() {
             document.getElementById('timeInputs').style.display = this.checked ? 'block' : 'none';
         });
         
-        // 40. تحديث حساب الخصم عند تغيير السعر الإجمالي
+        // 41. تحديث حساب الخصم عند تغيير السعر الإجمالي
         document.getElementById('totalWithDiscount').addEventListener('input', function() {
             calculateDiscountFromTotal();
         });
         
-        // 41. عرض معاينة صورة العرض
+        // 42. عرض معاينة صورة العرض
         document.getElementById('offerImage').addEventListener('input', function() {
             const preview = document.getElementById('offerImagePreview');
             if (this.value) {
@@ -1936,7 +2121,7 @@
             }
         });
 
-        // 42. تأكيد الحذف مع زر التراجع
+        // 43. تأكيد الحذف مع زر التراجع
         function showDeleteConfirmation(id, type) {
             let containerId;
             if (type === 'product' || type === 'offer') {
@@ -1960,7 +2145,7 @@
             `;
         }
 
-        // 43. التراجع عن تأكيد الحذف
+        // 44. التراجع عن تأكيد الحذف
         function cancelDelete(id, type) {
             let containerId;
             if (type === 'product' || type === 'offer') {
@@ -1974,6 +2159,26 @@
                 container.innerHTML = originalActionsHTML[containerId];
             }
         }
+        
+        // 45. حساب الخصم بناءً على السعر الإجمالي
+        function calculateDiscountFromTotal() {
+            const totalWithoutText = document.getElementById('totalWithoutDiscount').textContent;
+            const totalWithout = parseFloat(totalWithoutText) || 0;
+            const totalWith = parseFloat(document.getElementById('totalWithDiscount').value) || 0;
+            
+            if (totalWithout > 0 && totalWith > 0) {
+                const discountPercentage = ((totalWithout - totalWith) / totalWithout) * 100;
+                const discountValue = totalWithout - totalWith;
+                
+                document.getElementById('discountPercentage').textContent = discountPercentage.toFixed(0) + '%';
+                document.getElementById('discountValue').textContent = discountValue.toFixed(0) + ' ل.س';
+            }
+        }
+        
+        // 46. تفعيل دالة تغيير طريقة الإدخال عند التحميل
+        window.onload = function() {
+            changeProductMethod();
+        };
     </script>
 </body>
 </html>
